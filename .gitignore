@@ -1,0 +1,12 @@
+*.DotSettings
+*.suo
+*.tmp
+*.user
+*.ide
+TestResult.xml
+_ReSharper*/
+bin/
+obj/
+release/
+tmp/
+.vs/
