@@ -23,7 +23,8 @@ namespace Scraper.Parsers
 
         public void ParseDocument()
         {
-            this.NextPage = "https:" + dom.DocumentNode.SelectSingleNode("//a[contains(@class, 'page-next')]")?.Attributes["href"].Value;
+            if (dom.DocumentNode.SelectSingleNode("//a[contains(@class, 'page-next')]") != null)
+                this.NextPage = "https:" + dom.DocumentNode.SelectSingleNode("//a[contains(@class, 'page-next')]").Attributes["href"].Value;
             this.Category = dom.DocumentNode.SelectSingleNode("//span[contains(@class, 'current-cate')]").InnerText;
 
             foreach (var item in dom.DocumentNode.SelectSingleNode("//ul[contains(@class, 'son-list')]").ChildNodes)

@@ -93,8 +93,9 @@ namespace AliScraperWindowsForms
                     {
                         scraper = new WebScraper(parser.NextPage);
                         parser = new AliExpressParser(scraper.LoadPage());
-                        page_counter++;
                     }
+
+                    page_counter++;
                 } while (page_counter <= num_pages);
 
                 return 1;
@@ -113,6 +114,8 @@ namespace AliScraperWindowsForms
             else
             {
                 this.ProgressLogBox.Text += text;
+                this.ProgressLogBox.SelectionStart = this.ProgressLogBox.Text.Length;
+                this.ProgressLogBox.ScrollToCaret();
             }
         }
     }
