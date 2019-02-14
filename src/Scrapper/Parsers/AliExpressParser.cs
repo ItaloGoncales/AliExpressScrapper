@@ -25,7 +25,8 @@ namespace Scraper.Parsers
         {
             if (dom.DocumentNode.SelectSingleNode("//a[contains(@class, 'page-next')]") != null)
                 this.NextPage = "https:" + dom.DocumentNode.SelectSingleNode("//a[contains(@class, 'page-next')]").Attributes["href"].Value;
-            this.Category = dom.DocumentNode.SelectSingleNode("//span[contains(@class, 'current-cate')]").InnerText;
+            if (dom.DocumentNode.SelectSingleNode("//span[contains(@class, 'current-cate')]") != null)
+                this.Category = dom.DocumentNode.SelectSingleNode("//span[contains(@class, 'current-cate')]").InnerText;
 
             foreach (var item in dom.DocumentNode.SelectSingleNode("//ul[contains(@class, 'son-list')]").ChildNodes)
             {
